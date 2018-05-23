@@ -51,11 +51,11 @@ class FoodTruckTable extends React.Component {
 
         this.props.foodTrucks.forEach((foodTruck) => {
 
-            if(foodTruck.name.indexOf(filterText) === -1) {
+            if (foodTruck.name.indexOf(filterText) === -1) {
                 return;
             }
 
-            if (nowOpenOnly && !foodTruck.nowOpen){
+            if (nowOpenOnly && !foodTruck.nowOpen) {
                 return;
             }
 
@@ -94,20 +94,38 @@ class FoodTruckTable extends React.Component {
 }
 
 class SearchBar extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.handleNowOpenOnlyChange = this.handleNowOpenOnlyChange.bind(this);
+    }
+
+    handleFilterTextChange(e) {
+        this.props.onFilterTextChange(e.target.value);
+    }
+
+    handleNowOpenOnlyChange(e) {
+        this.props.onNowOpenOnlyChange(e.target.checked);
+    }
+
     render() {
         const filterText = this.props.filterText;
         const nowOpenOnly = this.props.nowOpenOnly;
+
         return (
             <form>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     name="searchFoodTrucks"
-                    placeholder="Search..." 
-                    value={filterText}/>
+                    placeholder="Search..."
+                    value={filterText}
+                    onChange={this.handleFilterTextChange} />
                 <p>
-                    <input 
+                    <input
                         type="checkbox"
-                        checked={nowOpenOnly} />
+                        checked={nowOpenOnly}
+                        onChange={this.handleNowOpenOnlyChange} />
                     {' '}
                     Only show food trucks that are open for business now
             </p>
@@ -123,18 +141,35 @@ export default class FoodTruckTableContainer extends React.Component {
             filterText: '',
             nowOpenOnly: false
         };
+
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.handleNowOpenOnlyChange = this.handleNowOpenOnlyChange.bind(this);
+    }
+
+    handleFilterTextChange(filterText) {
+        this.setState({
+            filterText: filterText
+        });
+    }
+
+    handleNowOpenOnlyChange(nowOpenOnly) {
+        this.setState({
+            nowOpenOnly: nowOpenOnly
+        })
     }
 
     render() {
         return (
             <div className="food-truck-list-container">
-                <SearchBar 
-                    filterText={this.state.filterText} 
-                    nowOpenOnly={this.state.nowOpenOnly}/>
-                <FoodTruckTable 
-                    foodTrucks={FoodTrucks} 
-                    filterText={this.state.filterText} 
-                    nowOpenOnly={this.state.nowOpenOnly}/>
+                <SearchBar
+                    filterText={this.state.filterText}
+                    nowOpenOnly={this.state.nowOpenOnly}
+                    onFilterTextChange={this.handleFilterTextChange}
+                    onNowOpenOnlyChange={this.handleNowOpenOnlyChange} />
+                <FoodTruckTable
+                    foodTrucks={FoodTrucks}
+                    filterText={this.state.filterText}
+                    nowOpenOnly={this.state.nowOpenOnly} />
             </div>
         );
     }
