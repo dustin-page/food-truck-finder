@@ -42,10 +42,23 @@ class FoodTruckRow extends React.Component {
 
 class FoodTruckTable extends React.Component {
     render() {
+
+        const filterText = this.props.filterText;
+        const nowOpenOnly = this.props.nowOpenOnly;
+
         const rows = [];
         let lastAlphaList = null;
 
         this.props.foodTrucks.forEach((foodTruck) => {
+
+            if(foodTruck.name.indexOf(filterText) === -1) {
+                return;
+            }
+
+            if (nowOpenOnly && !foodTruck.nowOpen){
+                return;
+            }
+
             if (foodTruck.alphaList !== lastAlphaList) {
                 rows.push(
                     <FoodTruckAlphaListRow
@@ -82,13 +95,21 @@ class FoodTruckTable extends React.Component {
 
 class SearchBar extends React.Component {
     render() {
+        const filterText = this.props.filterText;
+        const nowOpenOnly = this.props.nowOpenOnly;
         return (
             <form>
-                <input type="text" name="searchFoodTrucks" placeholder="Search..." />
+                <input 
+                    type="text" 
+                    name="searchFoodTrucks"
+                    placeholder="Search..." 
+                    value={filterText}/>
                 <p>
-                    <input type="checkbox" />
+                    <input 
+                        type="checkbox"
+                        checked={nowOpenOnly} />
                     {' '}
-                    Only show food trucks in St. Paul
+                    Only show food trucks that are open for business now
             </p>
             </form>
         );
@@ -96,11 +117,24 @@ class SearchBar extends React.Component {
 }
 
 export default class FoodTruckTableContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterText: '',
+            nowOpenOnly: false
+        };
+    }
+
     render() {
         return (
             <div className="food-truck-list-container">
-                <SearchBar />
-                <FoodTruckTable foodTrucks={FoodTrucks} />
+                <SearchBar 
+                    filterText={this.state.filterText} 
+                    nowOpenOnly={this.state.nowOpenOnly}/>
+                <FoodTruckTable 
+                    foodTrucks={FoodTrucks} 
+                    filterText={this.state.filterText} 
+                    nowOpenOnly={this.state.nowOpenOnly}/>
             </div>
         );
     }
