@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "alphaList": "C",
+        "cuisine": "American",
+        "foodType": "Sandwiches",
+        "location": "St. Paul, Minnesota",
+        "name": "Chef Shack",
+        "description": "Chef Shack is a mobile kitchen serving up some of the tastiest street food in Minneapolis."
+    },
+    {
+        "id": 2,
+        "alphaList": "H",
+        "cuisine": "Venezuelan",
+        "foodType": "Sandwiches",
+        "location": "Minneapolis, Minnesota",
+        "name": "Hola Arepa Food Truck",
+        "description": "Hola Arepa specializes in arepas which are cornmeal griddle cake Venezuelan sandwiches that are split open and stuffed with delicious Latin-style filling."
+    },
+    {
+        "id": 3,
+        "alphaList": "H",
+        "cuisine": "Indian",
+        "foodType": "Indian Burritos",
+        "location": "Minneapolis, Minnesota",
+        "name": "Hot Indian Foods",
+        "description": "The first and only Indian food truck in the Twin Cities!"
+    },
+    {
+        "id": 4,
+        "alphaList": "O",
+        "cuisine": "American",
+        "foodType": "Grilled Cheese, Comfort Food",
+        "location": "Minneapolis, Minnesota",
+        "name": "O'Cheeze",
+        "description": "We are a grilled cheese food truck serving the Minneapolis/St. Paul area! We post our whereabouts so you can come see us and enjoy a sandwich and some soup!"
+    },
+    {
+        "id": 5,
+        "alphaList": "P",
+        "cuisine": "British",
+        "foodType": "Pasties",
+        "location": "Minneapolis, Minnesota",
+        "name": "Potter's Pasties and Pies",
+        "description": "We are an underground pasty shop at 1828 Como Ave Minneapolis & food trucks, serving British style pasties with a real Brit on board. Mum would be proud."
+    },
+    {
+        "id": 6,
+        "alphaList": "S",
+        "cuisine": "American",
+        "foodType": "Sandwiches",
+        "location": "Minneapolis, Minnesota",
+        "name": "Sasquatch Sandwiches",
+        "description": "Sasquatch Sandwiches is a collaboration effort started by Gil Gaitan along with his family and friends in the Twin Cities Area."
+    }
+]
